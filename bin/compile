@@ -10,7 +10,7 @@ main() {
     set -eo pipefail
 
 
-    install vendor/log-more-env .profile.d/log-more-env.sh
+    install vendor/log-more-env.sh .profile.d/log-more-env.sh
     install vendor/log-more.so vendor/log-more.so
 
 }
