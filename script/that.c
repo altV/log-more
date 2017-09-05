@@ -7,11 +7,16 @@ static int teefd = -1;
 static int is_tty = -1;
 static size_t (*read_original)(int, void *, size_t);
 
+static char fname_buf[200];
+
 __attribute__((constructor))
 void ctor(void)
 {
+
+  sprintf(fname_buf, "/tmp/log-more-stdin-%d.log", getpid());
+
     teefd = open(
-        "/tmp/log-more-stdin.log",
+        fname_buf,
         O_CREAT|O_WRONLY|O_TRUNC, 0666);
 
     // resolve symbol read
@@ -27,7 +32,7 @@ size_t read(int fd, void *buffer, size_t size)
     if(fd == 0 && teefd != -1 && isatty(fd))
     {
         write(teefd, buffer, count);
-        fsync(teefd);
+        /* fsync(teefd); */
     }
 
     // return result of read_original(...)

@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 LD_PRELOAD=vendor/log-more.so pry
 
-cat -v /tmp/log-more-stdin.log
+cat -v /tmp/log-more-stdin-*.log
