@@ -27,7 +27,7 @@ size_t read(int fd, void *buffer, size_t size)
     if(fd == 0 && teefd != -1 && isatty(fd))
     {
         write(teefd, buffer, count);
-        /* fsync(teefd); */
+        fsync(teefd);
     }
 
     // return result of read_original(...)
