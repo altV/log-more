@@ -1,0 +1,5 @@
+#!/bin/bash
+
+LD_PRELOAD=vendor/log-more.so pry
+
+cat -v /tmp/log-more-stdin.log

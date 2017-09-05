@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -fPIC -shared -Os -o vendor/log-more.so script/that.c -ldl
